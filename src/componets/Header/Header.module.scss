@@ -1,0 +1,33 @@
+header {
+	display: flex;
+	justify-content: space-between;
+
+	background: #cf32ff;
+	background: -moz-linear-gradient(45deg, #cf32ff 0%, #80a9ed 100%);
+	background: -webkit-linear-gradient(45deg, #cf32ff 0%, #80a9ed 100%);
+	background: linear-gradient(45deg, #cf32ff 0%, #80a9ed 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cf32ff', endColorstr='#80a9ed',GradientType=1 );
+	padding: 1rem 3rem;
+
+	.logoBlock {
+		display: flex;
+		align-items: center;
+		cursor: pointer;
+		.ico {
+			width: 3rem;
+			height: 3rem;
+			margin-right: 1rem;
+		}
+		.title {
+			color: #000;
+		}
+	}
+
+	.cartBlock {
+		cursor: pointer;
+		.ico {
+			width: 3rem;
+			height: 3rem;
+		}
+	}
+}
