@@ -1,0 +1,56 @@
+.quantity {
+	display: flex;
+	align-items: center;
+	button {
+		margin: 0 5px;
+		width: 30px;
+		height: 30px;
+		background-color: rgb(1, 1, 1);
+		color: aliceblue;
+		border: none;
+		border-radius: 50%;
+		font-size: 1.7rem;
+		line-height: 0px;
+		font-weight: 700;
+		transition: background-color 0.2s ease-in;
+		cursor: pointer;
+		&:hover {
+			background-color: rgb(138, 138, 138);
+		}
+	}
+	.amount {
+		width: 1.9rem;
+		background-color: inherit;
+		border: none;
+		font-size: 1rem;
+		padding: 0 5px;
+		border-bottom: 1px solid #000;
+		-moz-appearance: textfield;
+		cursor: text;
+		text-align: center;
+		overflow: hidden;
+		transition: border-bottom 0.3s ease-in;
+
+		&:focus {
+			outline: none;
+			border: none;
+			border-bottom: 1px solid rgb(174, 174, 174);
+			appearance: none;
+		}
+
+		&::-webkit-outer-spin-button,
+		&::-webkit-inner-spin-button {
+			-webkit-appearance: none;
+			margin: 0;
+		}
+		&:hover,
+		&:focus {
+			-moz-appearance: number-input;
+		}
+		&::-webkit-inner-spin-button,
+		&::-webkit-outer-spin-button {
+			-webkit-appearance: none;
+			margin: 0;
+		}
+	}
+}

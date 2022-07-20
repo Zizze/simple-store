@@ -1,0 +1,23 @@
+.btn {
+	cursor: pointer;
+	font-weight: 700;
+	font-size: 1rem;
+	border: 1px solid rgb(89, 89, 89);
+	border-radius: 0.5rem;
+	padding: 0.4rem 2rem;
+	background: #cf32ff;
+	background: -moz-linear-gradient(45deg, #cf32ff 0%, #80a9ed 100%);
+	background: -webkit-linear-gradient(45deg, #cf32ff 0%, #80a9ed 100%);
+	background: linear-gradient(45deg, #cf32ff 0%, #80a9ed 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cf32ff', endColorstr='#80a9ed',GradientType=1 );
+	transition: all 0.2s ease-in;
+
+	&:hover {
+		transition: all 0.2s ease-in;
+		background: #727272;
+		background: -moz-linear-gradient(45deg, #9f9f9f 0%, #6f6f6f 100%);
+		background: -webkit-linear-gradient(45deg, #9f9f9f 0%, #6f6f6f 100%);
+		background: linear-gradient(45deg, #9f9f9f 0%, #6f6f6f 100%);
+		color: aliceblue;
+	}
+}
