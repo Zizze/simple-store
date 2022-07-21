@@ -24,10 +24,28 @@ header {
 	}
 
 	.cartBlock {
+		position: relative;
 		cursor: pointer;
 		.ico {
 			width: 3rem;
 			height: 3rem;
+		}
+		span {
+			position: absolute;
+			top: 0;
+			right: -20%;
+			width: 1.5rem;
+			height: 1.5rem;
+			text-align: center;
+			font-size: 1.1rem;
+			border-radius: 50%;
+			line-height: 1.5rem;
+			color: #fff;
+			background-color: rgb(117, 117, 117);
+			transition: background-color 0.2s ease-in;
+		}
+		span.notEmpty {
+			background-color: rgb(205, 1, 1);
 		}
 	}
 }

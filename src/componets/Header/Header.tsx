@@ -2,6 +2,7 @@ import React, { FC } from "react";
 import styles from "./Header.module.scss";
 import logo from "../../assets/img/logo.svg";
 import cartLogo from "../../assets/img/cart-logo.svg";
+import Cart from "../Cart/Cart";
 
 const Header: FC = () => {
 	return (
@@ -12,6 +13,8 @@ const Header: FC = () => {
 			</div>
 			<div className={styles.cartBlock}>
 				<img src={cartLogo} alt="cart logo" className={styles.ico} />
+				<span className={styles.notEmpty}>1</span>
+				{/* <Cart /> */}
 			</div>
 		</header>
 	);
