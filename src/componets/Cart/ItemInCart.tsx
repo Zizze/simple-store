@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import { IProduct } from "../../types";
 import Quantity from "../UI/Quantity";
 import styles from "./Cart.module.scss";
@@ -9,6 +9,8 @@ interface Props {
 }
 
 const ItemInCart: FC<Props> = ({ item }) => {
+	const [i, setI] = useState<string | number>(1);
+
 	return (
 		<div className={styles.item}>
 			<img src={item.image} alt={item.name} />
@@ -16,7 +18,7 @@ const ItemInCart: FC<Props> = ({ item }) => {
 
 			<div className={styles.control}>
 				<div className={styles.quantity}>
-					<Quantity />
+					<Quantity amount={1} setAmount={setI} />
 				</div>
 				<p className={styles.price}>
 					{item.amount} x {item.price}$

@@ -1,4 +1,7 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
+import { useSelector } from "react-redux";
+import { addToCart } from "../../redux/cart/cart";
+import { RootState, useAppDispatch } from "../../redux/store";
 import { IProduct } from "../../types";
 import Btn from "../UI/Btn";
 import Quantity from "../UI/Quantity";
@@ -9,6 +12,15 @@ interface IItem {
 }
 
 const Item: FC<IItem> = ({ item }) => {
+	const [amount, setAmount] = useState<string | number>(1);
+	const dispatch = useAppDispatch();
+	const i = useSelector<RootState>((state) => state.cart.itemsInCart);
+	console.log(i);
+
+	const clickHandler = () => {
+		dispatch(addToCart(item));
+	};
+
 	return (
 		<div className={styles.item}>
 			<div className={styles.info}>
@@ -18,8 +30,10 @@ const Item: FC<IItem> = ({ item }) => {
 			</div>
 
 			<div className={styles.btns}>
-				<Quantity />
-				<Btn type="button"> Add </Btn>
+				<Quantity amount={amount} setAmount={setAmount} />
+				<Btn type="button" onClick={clickHandler}>
+					Add
+				</Btn>
 			</div>
 		</div>
 	);

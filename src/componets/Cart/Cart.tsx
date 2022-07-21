@@ -58,6 +58,8 @@ const DUMMY_PRODUCTS_IN_CART: IProduct[] = [
 ];
 
 const Cart: FC = () => {
+	const clickHandler = () => {};
+
 	return (
 		<div className={styles.cart}>
 			<div className={styles.cartControls}>
@@ -72,7 +74,9 @@ const Cart: FC = () => {
 			))}
 
 			<div className={styles.total}>
-				<Btn type="button">Buy</Btn>
+				<Btn onClick={clickHandler} type="button">
+					Buy
+				</Btn>
 				<p className={styles.totalPrice}>Total</p>
 			</div>
 		</div>
