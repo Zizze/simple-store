@@ -8,6 +8,7 @@ header {
 	background: -webkit-linear-gradient(45deg, #cf32ff 0%, #80a9ed 100%);
 	background: linear-gradient(45deg, #cf32ff 0%, #80a9ed 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cf32ff', endColorstr='#80a9ed',GradientType=1 );
+	position: relative;
 
 	.logoBlock {
 		display: flex;

@@ -1,10 +1,16 @@
-import React, { FC } from "react";
+import React, { FC, Dispatch, MouseEvent } from "react";
 import { IProduct } from "../../types";
 import styles from "./Cart.module.scss";
 import ItemInCart from "./ItemInCart";
 import Btn from "../UI/Btn";
 import close from "../../assets/img/close.svg";
 import trash from "../../assets/img/trash-svgrepo-com.svg";
+import { useAppDispatch } from "../../redux/store";
+import { allDelete } from "../../redux/cart/cart";
+
+interface Props {
+	setCartIsOpen: Dispatch<React.SetStateAction<boolean>>;
+}
 
 const DUMMY_PRODUCTS_IN_CART: IProduct[] = [
 	{
@@ -57,14 +63,22 @@ const DUMMY_PRODUCTS_IN_CART: IProduct[] = [
 	},
 ];
 
-const Cart: FC = () => {
+const Cart: FC<Props> = ({ setCartIsOpen }) => {
+	const dispatch = useAppDispatch();
+
 	const clickHandler = () => {};
 
 	return (
 		<div className={styles.cart}>
 			<div className={styles.cartControls}>
-				<img src={close} alt="close cart" className={styles.closeCart} />
-				<div className={styles.allDelete}>
+				<img
+					onClick={() => setCartIsOpen(false)}
+					src={close}
+					alt="close cart"
+					className={styles.closeCart}
+				/>
+
+				<div className={styles.allDelete} onClick={() => dispatch(allDelete())}>
 					<p>All delete</p>
 					<img src={trash} alt="all delete" className={styles.trash} />
 				</div>

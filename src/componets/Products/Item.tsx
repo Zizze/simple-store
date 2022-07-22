@@ -14,11 +14,12 @@ interface IItem {
 const Item: FC<IItem> = ({ item }) => {
 	const [amount, setAmount] = useState<string | number>(1);
 	const dispatch = useAppDispatch();
+
 	const i = useSelector<RootState>((state) => state.cart.itemsInCart);
 	console.log(i);
 
 	const clickHandler = () => {
-		dispatch(addToCart(item));
+		dispatch(addToCart({ ...item, amount: +amount }));
 	};
 
 	return (

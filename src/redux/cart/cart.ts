@@ -12,12 +12,20 @@ const cartSlice = createSlice({
 	reducers: {
 		addToCart: (state, action: PayloadAction<IProduct>) => {
 			const findItem = state.itemsInCart.find((item) => item.id === action.payload.id);
-			findItem
-				? (findItem.amount = findItem.amount + action.payload.amount)
-				: state.itemsInCart.push(action.payload);
+
+			if (findItem) {
+				const checkAmount =
+					+action.payload.amount < 30 ? findItem.amount + action.payload.amount : 30;
+				findItem.amount = checkAmount;
+			} else {
+				state.itemsInCart.push(action.payload);
+			}
+		},
+		allDelete: (state) => {
+			state.itemsInCart = [];
 		},
 	},
 });
 
-export const { addToCart } = cartSlice.actions;
+export const { addToCart, allDelete } = cartSlice.actions;
 export default cartSlice.reducer;
