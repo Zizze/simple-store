@@ -41,12 +41,13 @@ header {
 			font-size: 1.1rem;
 			border-radius: 50%;
 			line-height: 1.5rem;
-			color: #fff;
-			background-color: rgb(117, 117, 117);
-			transition: background-color 0.2s ease-in;
+			color: rgb(0, 0, 0);
+			background-color: rgb(162, 162, 162);
+			transition: background-color 0.3s ease-in, color 0.3s ease-in;
 		}
 		span.notEmpty {
 			background-color: rgb(205, 1, 1);
+			color: #fff;
 		}
 	}
 }

@@ -3,12 +3,15 @@ import { IProduct } from "../../types";
 import Quantity from "../UI/Quantity";
 import styles from "./Cart.module.scss";
 import close from "../../assets/img/close.svg";
+import { useAppDispatch } from "../../redux/store";
+import { deleteItemInCart } from "../../redux/cart/cart";
 
 interface Props {
 	item: IProduct;
 }
 
 const ItemInCart: FC<Props> = ({ item }) => {
+	const dispatch = useAppDispatch();
 	const [i, setI] = useState<string | number>(1);
 
 	return (
@@ -25,7 +28,12 @@ const ItemInCart: FC<Props> = ({ item }) => {
 				</p>
 			</div>
 
-			<img src={close} alt="delete" className={styles.close} />
+			<img
+				src={close}
+				alt="delete"
+				className={styles.close}
+				onClick={() => dispatch(deleteItemInCart(item.id))}
+			/>
 		</div>
 	);
 };

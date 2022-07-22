@@ -3,9 +3,13 @@ import styles from "./Header.module.scss";
 import logo from "../../assets/img/logo.svg";
 import cartLogo from "../../assets/img/cart-logo.svg";
 import Cart from "../Cart/Cart";
+import { RootState } from "../../redux/store";
+import { useSelector } from "react-redux";
+import { IProduct } from "../../types";
 
 const Header: FC = () => {
 	const [cartIsOpen, setCartIsOpen] = useState(false);
+	const itemsInCart = useSelector<RootState, IProduct[]>((state) => state.cart.itemsInCart);
 
 	return (
 		<header>
@@ -15,7 +19,7 @@ const Header: FC = () => {
 			</div>
 			<div className={styles.cartBlock} onClick={() => setCartIsOpen((prevState) => !prevState)}>
 				<img src={cartLogo} alt="cart logo" className={styles.ico} />
-				<span className={styles.notEmpty}>1</span>
+				<span className={itemsInCart.length > 0 ? styles.notEmpty : ""}>{itemsInCart.length}</span>
 			</div>
 			{cartIsOpen && <Cart setCartIsOpen={setCartIsOpen} />}
 		</header>
