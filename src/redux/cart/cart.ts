@@ -1,9 +1,11 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { totalPrice } from "../../lib/totalPrice";
 import { IProduct } from "../../types";
 import { ICartProduct } from "./types";
 
 const initialState: ICartProduct = {
 	itemsInCart: [],
+	totalPrice: 0,
 };
 
 const cartSlice = createSlice({
@@ -19,16 +21,27 @@ const cartSlice = createSlice({
 			} else {
 				state.itemsInCart.push(action.payload);
 			}
+			state.totalPrice = totalPrice(state.itemsInCart);
 		},
 		deleteItemInCart: (state, action: PayloadAction<number>) => {
 			const filtredItems = state.itemsInCart.filter((item) => item.id !== action.payload);
 			state.itemsInCart = filtredItems;
+			state.totalPrice = totalPrice(state.itemsInCart);
 		},
 		allDelete: (state) => {
 			state.itemsInCart = [];
+			state.totalPrice = 0;
+		},
+		totalPriceCheck: (state, action: PayloadAction<IProduct>) => {
+			const findItem = state.itemsInCart.find((item) => item.id === action.payload.id);
+
+			if (findItem) {
+				findItem.amount = action.payload.amount;
+			}
+			state.totalPrice = totalPrice(state.itemsInCart);
 		},
 	},
 });
 
-export const { addToCart, allDelete, deleteItemInCart } = cartSlice.actions;
+export const { addToCart, allDelete, deleteItemInCart, totalPriceCheck } = cartSlice.actions;
 export default cartSlice.reducer;

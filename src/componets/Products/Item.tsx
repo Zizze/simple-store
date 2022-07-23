@@ -16,6 +16,7 @@ const Item: FC<IItem> = ({ item }) => {
 
 	const clickHandler = () => {
 		dispatch(addToCart({ ...item, amount: +amount }));
+		setAmount(1);
 	};
 
 	return (

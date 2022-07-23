@@ -1,18 +1,28 @@
-import React, { FC, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { IProduct } from "../../types";
 import Quantity from "../UI/Quantity";
 import styles from "./Cart.module.scss";
 import close from "../../assets/img/close.svg";
 import { useAppDispatch } from "../../redux/store";
-import { deleteItemInCart } from "../../redux/cart/cart";
+import { deleteItemInCart, totalPriceCheck } from "../../redux/cart/cart";
 
 interface Props {
 	item: IProduct;
+	isLastItem: () => void;
 }
 
-const ItemInCart: FC<Props> = ({ item }) => {
+const ItemInCart: FC<Props> = ({ item, isLastItem }) => {
 	const dispatch = useAppDispatch();
-	const [i, setI] = useState<string | number>(1);
+	const [amount, setAmount] = useState<string | number>(item.amount);
+
+	useEffect(() => {
+		dispatch(totalPriceCheck({ ...item, amount: +amount }));
+	}, [amount, item, dispatch]);
+
+	const i = () => {
+		dispatch(deleteItemInCart(item.id));
+		isLastItem();
+	};
 
 	return (
 		<div className={styles.item}>
@@ -21,19 +31,14 @@ const ItemInCart: FC<Props> = ({ item }) => {
 
 			<div className={styles.control}>
 				<div className={styles.quantity}>
-					<Quantity amount={1} setAmount={setI} />
+					<Quantity setAmount={setAmount} amount={amount} />
 				</div>
 				<p className={styles.price}>
-					{item.amount} x {item.price}$
+					{amount} x {item.price}$
 				</p>
 			</div>
 
-			<img
-				src={close}
-				alt="delete"
-				className={styles.close}
-				onClick={() => dispatch(deleteItemInCart(item.id))}
-			/>
+			<img src={close} alt="delete" className={styles.close} onClick={i} />
 		</div>
 	);
 };

@@ -7,7 +7,7 @@
 	border-radius: 5px;
 	-webkit-box-shadow: 4px 5px 7px 0px #8b0095;
 	box-shadow: 4px 5px 7px 0px #8b0095;
-	z-index: 1;
+	z-index: 10;
 
 	.cartControls {
 		display: flex;
@@ -99,7 +99,7 @@
 		border-top: 1px solid rgb(159, 159, 159);
 
 		.totalPrice {
-			font-size: 1.5rem;
+			font-size: 1.2rem;
 		}
 	}
 }
