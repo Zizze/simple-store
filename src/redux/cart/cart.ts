@@ -32,6 +32,7 @@ const cartSlice = createSlice({
 			state.itemsInCart = [];
 			state.totalPrice = 0;
 		},
+		// When you click on minus or plus in the cart
 		totalPriceCheck: (state, action: PayloadAction<IProduct>) => {
 			const findItem = state.itemsInCart.find((item) => item.id === action.payload.id);
 
