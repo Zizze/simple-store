@@ -29,10 +29,16 @@
 			}
 			.name {
 				text-align: center;
+				color: rgb(161, 0, 172);
 			}
 			.price {
 				text-align: center;
-				margin-bottom: 3rem;
+				margin-bottom: 2rem;
+
+				span {
+					color: rgb(161, 0, 172);
+					font-weight: 600;
+				}
 			}
 		}
 		.btns {
