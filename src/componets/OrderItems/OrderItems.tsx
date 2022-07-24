@@ -1,7 +1,8 @@
 import React, { MouseEvent, useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { RootState } from "../../redux/store";
+import { allDelete } from "../../redux/cart/cart";
+import { RootState, useAppDispatch } from "../../redux/store";
 import { IProduct } from "../../types";
 import Btn from "../UI/Btn";
 import styles from "./OrderItems.module.scss";
@@ -16,6 +17,7 @@ const initialState: {
 
 const OrderItems = () => {
 	const navigate = useNavigate();
+	const dispatch = useAppDispatch();
 	const itemsInCart = useSelector<RootState, IProduct[]>((state) => state.cart.itemsInCart);
 
 	const [fullName, setFullName] = useState(initialState);
@@ -42,6 +44,14 @@ const OrderItems = () => {
 
 	const submitHandler = (e: MouseEvent<HTMLFormElement>) => {
 		e.preventDefault();
+
+		//Send the client info and items  from cart  on api or email
+
+		navigate("/order/success");
+		dispatch(allDelete());
+		setFullName(initialState);
+		setAdress(initialState);
+		setPhone(initialState);
 	};
 
 	const fullNameChange = () => {

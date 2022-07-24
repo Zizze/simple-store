@@ -14,7 +14,7 @@ const OrderSuccess = () => {
 	return (
 		<div className={styles.container}>
 			<div className={styles.success}>
-				<img src={logoSvg} alt="succes image" />
+				<img src={logoSvg} alt="succes" />
 				<p>Success!</p>
 				<Btn type="button" onClick={onClick}>
 					Go home
