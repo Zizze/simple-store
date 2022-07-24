@@ -8,19 +8,24 @@ import trash from "../../assets/img/trash-svgrepo-com.svg";
 import { RootState, useAppDispatch } from "../../redux/store";
 import { allDelete } from "../../redux/cart/cart";
 import { useSelector } from "react-redux";
+import { useLocation, useNavigate } from "react-router-dom";
 
 interface Props {
 	setCartIsOpen: Dispatch<React.SetStateAction<boolean>>;
 }
 
 const Cart: FC<Props> = ({ setCartIsOpen }) => {
+	const location = useLocation().pathname;
+	const navigate = useNavigate();
 	const dispatch = useAppDispatch();
 	const itemsInCart = useSelector<RootState, IProduct[]>((state) => state.cart.itemsInCart);
 	const totalPrice = useSelector<RootState, number>((state) => state.cart.totalPrice);
-
 	console.log(itemsInCart);
 
-	const clickHandler = () => {};
+	const clickHandler = () => {
+		navigate("/order");
+		setCartIsOpen(false);
+	};
 
 	const allDeleteClick = () => {
 		dispatch(allDelete());
@@ -51,9 +56,11 @@ const Cart: FC<Props> = ({ setCartIsOpen }) => {
 			))}
 
 			<div className={styles.total}>
-				<Btn onClick={clickHandler} type="button">
-					Buy
-				</Btn>
+				{location !== "/order" && (
+					<Btn onClick={clickHandler} type="button">
+						Buy
+					</Btn>
+				)}
 				<p className={styles.totalPrice}>Total: {totalPrice}$</p>
 			</div>
 		</div>

@@ -7,6 +7,7 @@ import { RootState } from "../../redux/store";
 import { useSelector } from "react-redux";
 import { IProduct } from "../../types";
 import Overlay from "../UI/Overlay";
+import { Link } from "react-router-dom";
 
 const Header: FC = () => {
 	const [cartIsOpen, setCartIsOpen] = useState(false);
@@ -16,10 +17,10 @@ const Header: FC = () => {
 
 	return (
 		<header>
-			<div className={styles.logoBlock}>
+			<Link to="/" className={styles.logoBlock}>
 				<img src={logo} alt="logo" className={styles.ico} />
 				<h1 className={styles.title}>Simple store</h1>
-			</div>
+			</Link>
 			<div
 				className={styles.cartBlock}
 				onClick={() => (haveItemsInCart ? setCartIsOpen((prevState) => !prevState) : null)}

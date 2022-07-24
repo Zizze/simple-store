@@ -1,0 +1,25 @@
+.container {
+	max-width: 1100px;
+	margin: 0 auto;
+	background-color: #fff;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 87vh;
+	border-radius: 1rem;
+
+	.success {
+		width: 300px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+
+		img {
+			width: 100%;
+		}
+		p {
+			font-size: 3rem;
+			margin-bottom: 3rem;
+		}
+	}
+}

@@ -1,4 +1,8 @@
-import React, { MouseEvent, useRef, useState } from "react";
+import React, { MouseEvent, useEffect, useRef, useState } from "react";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { RootState } from "../../redux/store";
+import { IProduct } from "../../types";
 import Btn from "../UI/Btn";
 import styles from "./OrderItems.module.scss";
 
@@ -11,6 +15,9 @@ const initialState: {
 };
 
 const OrderItems = () => {
+	const navigate = useNavigate();
+	const itemsInCart = useSelector<RootState, IProduct[]>((state) => state.cart.itemsInCart);
+
 	const [fullName, setFullName] = useState(initialState);
 	const [adress, setAdress] = useState(initialState);
 	const [phone, setPhone] = useState(initialState);
@@ -29,7 +36,9 @@ const OrderItems = () => {
 			? true
 			: false;
 
-	console.log(isValid);
+	useEffect(() => {
+		if (itemsInCart.length === 0) navigate("/");
+	}, [itemsInCart, navigate]);
 
 	const submitHandler = (e: MouseEvent<HTMLFormElement>) => {
 		e.preventDefault();
@@ -112,7 +121,9 @@ const OrderItems = () => {
 					<Btn type="submit" disabled={!isValid}>
 						Order prodcuts
 					</Btn>
-					<button className={styles.home}>Home</button>
+					<button className={styles.home} onClick={() => navigate("/")}>
+						Home
+					</button>
 				</div>
 			</form>
 		</div>
