@@ -1,5 +1,4 @@
-import React, { FC } from "react";
-import { useLocation } from "react-router-dom";
+import { FC } from "react";
 import { IProduct } from "../../types";
 import Item from "./Item";
 import styles from "./Products.module.scss";

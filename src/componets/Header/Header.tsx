@@ -1,20 +1,20 @@
-import React, { FC, useState } from "react";
+import { FC, useState } from "react";
 import styles from "./Header.module.scss";
 import logo from "../../assets/img/logo.svg";
 import cartLogo from "../../assets/img/cart-logo.svg";
 import Cart from "../Cart/Cart";
 import { RootState } from "../../redux/store";
 import { useSelector } from "react-redux";
-import { IProduct } from "../../types";
 import Overlay from "../UI/Overlay";
 import { Link } from "react-router-dom";
 
 const Header: FC = () => {
 	const [cartIsOpen, setCartIsOpen] = useState(false);
-	const itemsInCart = useSelector<RootState, IProduct[]>((state) => state.cart.itemsInCart);
-	const haveItemsInCart = itemsInCart.length > 0;
-	console.log(cartIsOpen);
+	const totalAmount = useSelector<RootState, number>((state) => state.cart.totalAmount);
 
+	const haveItemsInCart = totalAmount > 0;
+
+	const cn = totalAmount < 100 ? styles.notEmpty : styles.notEmptyBig;
 	return (
 		<header>
 			<Link to="/" className={styles.logoBlock}>
@@ -26,7 +26,7 @@ const Header: FC = () => {
 				onClick={() => (haveItemsInCart ? setCartIsOpen((prevState) => !prevState) : null)}
 			>
 				<img src={cartLogo} alt="cart logo" className={styles.ico} />
-				<span className={haveItemsInCart ? styles.notEmpty : ""}>{itemsInCart.length}</span>
+				<span className={haveItemsInCart ? cn : ""}>{totalAmount}</span>
 			</div>
 			{cartIsOpen && haveItemsInCart && <Cart setCartIsOpen={setCartIsOpen} />}
 			{cartIsOpen && haveItemsInCart && <Overlay setState={setCartIsOpen} />}
