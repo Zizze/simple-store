@@ -1,0 +1,30 @@
+.container {
+	max-width: 1100px;
+	margin: 0 auto;
+	background-color: #fff;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 87vh;
+	border-radius: 1rem;
+
+	.error {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		max-width: 300px;
+
+		img {
+			width: 100%;
+			opacity: 0.5;
+		}
+
+		p {
+			font-size: 2rem;
+			span {
+				color: red;
+			}
+		}
+	}
+}
