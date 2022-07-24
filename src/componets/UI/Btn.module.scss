@@ -15,5 +15,6 @@
 	&:disabled {
 		background: rgb(130, 130, 130);
 		color: aliceblue;
+		cursor: no-drop;
 	}
 }
