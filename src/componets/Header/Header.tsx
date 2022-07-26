@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import styles from "./Header.module.scss";
 import logo from "../../assets/img/logo.svg";
 import cartLogo from "../../assets/img/cart-logo.svg";
@@ -13,8 +13,12 @@ const Header: FC = () => {
 	const totalAmount = useSelector<RootState, number>((state) => state.cart.totalAmount);
 
 	const haveItemsInCart = totalAmount > 0;
-
 	const cn = totalAmount < 100 ? styles.notEmpty : styles.notEmptyBig;
+
+	useEffect(() => {
+		document.body.style.overflow = cartIsOpen ? "hidden" : "auto";
+	}, [cartIsOpen]);
+
 	return (
 		<header>
 			<Link to="/" className={styles.logoBlock}>

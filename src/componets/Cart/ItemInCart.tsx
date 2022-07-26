@@ -26,9 +26,8 @@ const ItemInCart: FC<Props> = ({ item, isLastItem }) => {
 
 	return (
 		<div className={styles.item}>
-			<img src={item.image} alt={item.name} />
+			<img src={item.image} alt={item.name} className={styles.image} />
 			<h3 className={styles.name}>{item.name}</h3>
-
 			<div className={styles.control}>
 				<div className={styles.quantity}>
 					<Quantity setAmount={setAmount} amount={amount} />

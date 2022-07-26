@@ -8,6 +8,8 @@
 	-webkit-box-shadow: 4px 5px 7px 0px #8b0095;
 	box-shadow: 4px 5px 7px 0px #8b0095;
 	z-index: 10;
+	max-height: 80vh;
+	overflow: auto;
 
 	.cartControls {
 		display: flex;
@@ -59,7 +61,7 @@
 		}
 
 		.name {
-			max-width: 15rem;
+			width: 15rem;
 			text-align: center;
 		}
 
@@ -67,13 +69,11 @@
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
+			width: 15rem;
 			.price {
-				width: 7rem;
-				text-align: end;
 				font-weight: 700;
-			}
-			.quantity {
-				width: 6.5rem;
+				width: 5rem;
+				text-align: right;
 			}
 		}
 		.close {
@@ -100,6 +100,62 @@
 
 		.totalPrice {
 			font-size: 1.2rem;
+		}
+	}
+
+	@media only screen and (max-width: 700px) {
+		position: fixed;
+		overflow-y: auto;
+		left: 0;
+		top: 0;
+		width: 100%;
+		min-height: 100vh;
+		-webkit-box-shadow: none;
+		box-shadow: none;
+		flex: 1 1 100%;
+		flex-wrap: wrap;
+		.item {
+			width: 100%;
+		}
+	}
+
+	@media only screen and (max-width: 475px) {
+		.item {
+			flex-direction: column;
+			height: 300px;
+
+			.image {
+				min-width: 15rem;
+				min-height: 12rem;
+				object-fit: contain;
+				margin-top: 1rem;
+			}
+
+			.name {
+				text-align: center;
+				padding-bottom: 0.5rem;
+			}
+
+			.control {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				padding-bottom: 1rem;
+				.price {
+					font-weight: 700;
+					width: 5rem;
+					text-align: end;
+				}
+				.quantity {
+				}
+			}
+			.close {
+				position: absolute;
+				top: 2%;
+				right: 0;
+				width: 2.5rem;
+				height: 2.5rem;
+			}
 		}
 	}
 }
