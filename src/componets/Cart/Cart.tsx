@@ -18,8 +18,8 @@ const Cart: FC<Props> = ({ setCartIsOpen }) => {
 	const location = useLocation().pathname;
 	const navigate = useNavigate();
 	const dispatch = useAppDispatch();
-	const itemsInCart = useSelector<RootState, IProduct[]>((state) => state.cart.itemsInCart);
-	const totalPrice = useSelector<RootState, number>((state) => state.cart.totalPrice);
+	const itemsInCart = useSelector((state: RootState) => state.cart.itemsInCart);
+	const totalPrice = useSelector((state: RootState) => state.cart.totalPrice);
 	console.log(itemsInCart);
 
 	const clickHandler = () => {

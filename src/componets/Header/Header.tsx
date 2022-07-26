@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 
 const Header: FC = () => {
 	const [cartIsOpen, setCartIsOpen] = useState(false);
-	const totalAmount = useSelector<RootState, number>((state) => state.cart.totalAmount);
+	const { itemsInCart, totalAmount, totalPrice } = useSelector((state: RootState) => state.cart);
 
 	const haveItemsInCart = totalAmount > 0;
 	const cn = totalAmount < 100 ? styles.notEmpty : styles.notEmptyBig;
@@ -18,6 +18,10 @@ const Header: FC = () => {
 	useEffect(() => {
 		document.body.style.overflow = cartIsOpen ? "hidden" : "auto";
 	}, [cartIsOpen]);
+
+	useEffect(() => {
+		window.localStorage.setItem("cart", JSON.stringify({ itemsInCart, totalAmount, totalPrice }));
+	}, [itemsInCart, totalAmount, totalPrice]);
 
 	return (
 		<header>

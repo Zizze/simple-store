@@ -4,10 +4,14 @@ import { totalAmount } from "../../lib/totalAmount";
 import { IProduct } from "../../types";
 import { ICartProduct } from "./types";
 
+const LS = window.localStorage.getItem("cart")
+	? JSON.parse(window.localStorage.getItem("cart") || "")
+	: { itemsInCart: [], totalPrice: 0, totalAmount: 0 };
+
 const initialState: ICartProduct = {
-	itemsInCart: [],
-	totalPrice: 0,
-	totalAmount: 0,
+	itemsInCart: LS.itemsInCart,
+	totalPrice: LS.totalPrice,
+	totalAmount: LS.totalAmount,
 };
 
 const cartSlice = createSlice({
