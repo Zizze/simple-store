@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { IProduct } from "../../types";
 import Quantity from "../UI/Quantity";
 import styles from "./Cart.module.scss";

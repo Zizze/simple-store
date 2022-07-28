@@ -1,4 +1,4 @@
-import React, { FC, Dispatch } from "react";
+import { FC, Dispatch, SetStateAction } from "react";
 import { IProduct } from "../../types";
 import styles from "./Cart.module.scss";
 import ItemInCart from "./ItemInCart";
@@ -11,16 +11,14 @@ import { useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 
 interface Props {
-	setCartIsOpen: Dispatch<React.SetStateAction<boolean>>;
+	setCartIsOpen: Dispatch<SetStateAction<boolean>>;
 }
 
 const Cart: FC<Props> = ({ setCartIsOpen }) => {
-	const location = useLocation().pathname;
+	const { itemsInCart, totalPrice } = useSelector((state: RootState) => state.cart);
 	const navigate = useNavigate();
 	const dispatch = useAppDispatch();
-	const itemsInCart = useSelector((state: RootState) => state.cart.itemsInCart);
-	const totalPrice = useSelector((state: RootState) => state.cart.totalPrice);
-	console.log(itemsInCart);
+	const location = useLocation();
 
 	const clickHandler = () => {
 		navigate("/order");
@@ -56,7 +54,7 @@ const Cart: FC<Props> = ({ setCartIsOpen }) => {
 			))}
 
 			<div className={styles.total}>
-				{location !== "/order" && (
+				{location.pathname !== "/order" && (
 					<Btn onClick={clickHandler} type="button">
 						Buy
 					</Btn>

@@ -1,9 +1,8 @@
-import React, { MouseEvent, useEffect, useRef, useState } from "react";
+import { MouseEvent, useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { allDelete } from "../../redux/cart/cart";
 import { RootState, useAppDispatch } from "../../redux/store";
-import { IProduct } from "../../types";
 import Btn from "../UI/Btn";
 import styles from "./OrderItems.module.scss";
 
@@ -18,7 +17,7 @@ const initialState: {
 const OrderItems = () => {
 	const navigate = useNavigate();
 	const dispatch = useAppDispatch();
-	const itemsInCart = useSelector<RootState, IProduct[]>((state) => state.cart.itemsInCart);
+	const { itemsInCart } = useSelector((state: RootState) => state.cart);
 
 	const [fullName, setFullName] = useState(initialState);
 	const [adress, setAdress] = useState(initialState);

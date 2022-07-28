@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./ErrorPage.module.scss";
 import notFound from "../../assets/img/not-found.svg";
 

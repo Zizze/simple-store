@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FC, useRef, Dispatch, SetStateAction } from "react";
+import { ChangeEvent, FC, useRef, Dispatch, SetStateAction } from "react";
 import styles from "./Quantity.module.scss";
 
 interface Props {

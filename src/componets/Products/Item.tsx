@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import { FC, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { addToCart } from "../../redux/cart/cart";
 import { useAppDispatch } from "../../redux/store";

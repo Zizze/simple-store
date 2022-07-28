@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./OrderSuccess.module.scss";
 import logoSvg from "../../../assets/img/ok.svg";
 import Btn from "../../UI/Btn";

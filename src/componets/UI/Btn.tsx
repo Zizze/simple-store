@@ -1,8 +1,8 @@
-import React, { FC } from "react";
+import { FC, ReactNode } from "react";
 import styles from "./Btn.module.scss";
 
 interface Props {
-	children: React.ReactNode;
+	children: ReactNode;
 	type: "button" | "submit" | "reset" | undefined;
 	onClick?: () => void;
 	disabled?: boolean;
